@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>とにかくすぐSocket.ioを使ってみたい</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <br>
+    <div class="alert alert-success" role="alert">
+      <h3>とにかくすぐSocket.ioを使ってみたい</h3>
+      <hr>
+      <form>
+        <div class="form-group">
+          <label for="msgForm">メッセージ</label>
+          <input type="text" class="form-control" id="msgForm">
+        </div>
+        <button type="submit" class="btn btn-success">送信</button>
+      </form>
+    </div>
+    <div id="chatlogs"></div>
+  </div>
+
+  <script type="text/javascript">
+    //
+    var socket = io.connect();
+    socket.on("server_to_client", function (data) {
+      appendMsg(data.value)
+    });
+    //
+    function appendMsg(text) {
+      $("#chatlogs").append("<div class='col-lg-12 alert alert-info'>" + text + "</div>");
+    }
+    //  
+    $("form").submit(function (e) {
+      var message = $("#msgForm").val();
+      $("#msgForm").val('');
+      socket.emit("client_to_server", {
+        value: message
+      });
+      e.preventDefault();
+    });
+  </script>
+</body>
+
+</html>

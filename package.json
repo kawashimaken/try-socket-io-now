@@ -1,0 +1,26 @@
+{
+  "name": "try-socket-io-now",
+  "version": "1.0.0",
+  "description": "simplest socketio example code",
+  "main": "app.js",
+  "dependencies": {
+    "socketio": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kawashimaken/try-socket-io-now.git"
+  },
+  "keywords": [
+    "socketio"
+  ],
+  "author": "Ken Kawashima",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kawashimaken/try-socket-io-now/issues"
+  },
+  "homepage": "https://github.com/kawashimaken/try-socket-io-now#readme"
+}
